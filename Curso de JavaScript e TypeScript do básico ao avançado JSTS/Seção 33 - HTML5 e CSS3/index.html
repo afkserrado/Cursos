@@ -5,14 +5,43 @@
 <html lang = pt-BR> <!-- Tag raiz do html. Sempre colocar -->
     
     <head> <!-- Metadados -->
+        
         <meta charset = "utf-8"> <!-- Codificação do texto-->
         <title> Meu Primeiro HTML </title>
+
+        <!-- Estilizando tags, ids e classes -->
+        <style>
+            h1 { 
+                background: red;
+            }
+
+            p {
+                background: green;
+            }
+
+            #cabecalho-dois {
+                color: yellow;
+            }
+
+            .italico {
+                font-style: italic;
+            }
+
+        </style>
+
     </head>
 
     <body> <!-- Corpo do navegador -->
-        <h1> Meu HTML </h1> <!-- Título -->
+        <h1 id="cabecalho-um" class = "italico borda-esquerda"> <!-- Duas classes -->
+            Título 1
+        </h1> <!-- Título -->
+
+        <h1 id="cabecalho-dois" class = "italico">
+            Título 2
+        </h1>
+        
         <p> <!-- Parágrafo -->
-            Olá, amigos.
+            Parágrafo: <b> corpo do texto </b>
         </p>
     </body>
 
