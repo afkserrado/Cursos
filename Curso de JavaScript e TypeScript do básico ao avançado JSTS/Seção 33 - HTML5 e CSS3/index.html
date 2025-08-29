@@ -64,13 +64,26 @@
 
             /* Tags */
             h1 { 
-                font-style: italic;
+                text-transform: uppercase;
+                font-family: "Roboto";
             }
 
             p {
                 font-size: 20px;
                 font-family: 'Roboto';
                 color: darkcyan;
+            }
+
+            hr {
+                border: none;
+                height: 3px;
+                background-color: black;
+            }
+
+            blockquote {
+                text-align: justify; /* Texto justificado */
+                max-width: 600px; /* Largura máxima do bloco */
+                margin: 20px auto; /* Centraliza o bloco com margens automáticas */
             }
             
             code {
@@ -85,7 +98,8 @@
     <body> 
 
         <!-- Títulos e Parágrafos -->
-        <h1 id="cabecalho-um" class="fonte-azul-claro" style="font-size: 50px; ">
+        <h1> Títulos e Parágrafos </h1>
+        <h1 id="cabecalho-um" class="fonte-azul-claro italico" style="font-size: 25px;">
             <u> Título 1 - Cabeçalho Um </u>
         </h1>
 
@@ -110,31 +124,52 @@
         <h5> Título 5 </h5>
         <h6> Título 6 </h6>
 
+        <hr> <!-- Linha -->
+
         <!-- Links -->
+        <h1> Links </h1>
         <!-- Abre em nova guia -->
         <a href = "https://github.com/afkserrado" target = "_blank"> 
             Link do meu GitHub <br> <br>
         </a>
 
+        <hr> <!-- Linha -->
+
         <!-- Imagens -->
+        <h1> Imagens </h1>
         <a href = "https://devicon.dev/" target = "_blank">
             <img class = "icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" alt = "Logo do HTML5 com link para o site devicon.dev">
         </a>
+
+        <hr> <!-- Linha -->
         
-        <p class = "corpo-texto"> <!-- Parágrafo -->
-            Parágrafo: <b> corpo do texto </b>
+        <!-- Estilos de texto -->
+        <h1> Estilos de texto </h1>
+        <p class = "corpo-texto"> 
+            <b> Parágrafo: </b> negrito
         </p>
 
-        <p class = "corpo-texto"> Lorem <del>ipsum</del> <ins> correção </ins> sit, amet consectetur adipisicing elit. Maiores, perspiciatis amet. Exercitationem magni praesentium, cumque adipisci corporis unde id nisi quisquam, velit mollitia iusto voluptatem minus. Architecto harum ipsum reprehenderit. </p>
+        <p class = "corpo-texto"> 
+            <b> Riscado e sublinhado: </b> <br>
+            Lorem <del> ipsum </del> <ins> correção </ins> sit, amet consectetur adipisicing elit. Maiores, perspiciatis amet. Exercitationem magni praesentium, cumque adipisci corporis unde id nisi quisquam, velit mollitia iusto voluptatem minus. Architecto harum ipsum reprehenderit. 
+        </p>
 
         <p class = "corpo-texto" > 
-            <b> Matemática: </b> <br> <!-- Negrito + quebra de linha -->
-            X<small>2</small> <br>
-            Y<sup>2</sup>
+            <b> Matemática: </b> <br>
+            Subíndice: X<sub>2</sub> <br>
+            Expoente: Y<sup>2</sup>
         </p>
+
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium ut perferendis officia <span style="background: red; font-size: 40px; color: black; font-style: italic;"> velit aliquid </span>, aspernatur perspiciatis recusandae temporibus odit saepe provident laudantium voluptates fugit deserunt, adipisci minus error obcaecati explicabo!
+        </p>
+
+        <hr> <!-- Linha -->
 
         <!-- Citações -->
         <!-- Citação direta curta -->
+        <h1> Citações </h1>
+
         <p class = "topico corpo-texto">
             <b> Citações: </b> <br>
             <q>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam dolores quaerat ipsam minus suscipit illum voluptatum quasi accusantium numquam dolorum veritatis sint, quas voluptatem nostrum quos minima accusamus delectus facere?</q>
@@ -145,10 +180,10 @@
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam dolores quaerat ipsam minus suscipit illum voluptatum quasi accusantium numquam dolorum veritatis sint, quas voluptatem nostrum quos minima accusamus delectus facere?
         </blockquote>
 
-        <!-- Linha -->
-        <hr>
+        <hr> <!-- Linha -->
 
         <!-- Código -->
+        <h1> Códigos </h1>
         <pre class = "codigo"> <!-- Preserva a formatação do texto -->
             <code> <!-- Indica que o texto é um código-fonte -->
 #include &ltstdio.h&gt <!-- Sinais de < e > -->
@@ -159,11 +194,6 @@ int main () {
 }
             </code>
         </pre>
-
-        <!-- Estilizando parte de um parágrafo -->
-        <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium ut perferendis officia <span style="background: red; font-size: 40px;"> velit aliquid </span>, aspernatur perspiciatis recusandae temporibus odit saepe provident laudantium voluptates fugit deserunt, adipisci minus error obcaecati explicabo!
-        </p>
         
     </body>
 
