@@ -1,25 +1,55 @@
 <!-- Estrutura do HTML -->
 <!-- Especifica para o navegador que o arquivo é um doc HTML5 -->
-<!doctype html> <!-- Sempre iniciar com isso -->
+<!doctype html> <!-- Requisito obrigatório -->
 
-<html lang = pt-BR> <!-- Tag raiz do html. Sempre colocar -->
+<!-- Tag raiz do HTML -->
+<html lang = pt-BR> <!-- Requisito obrigatório -->
     
     <!-- Metadados -->
     <head> 
         
-        <meta charset = "utf-8"> <!-- Codificação do texto-->
-        <title> Meu Primeiro HTML </title>
+        <!-- Codificação do texto-->
+        <meta charset = "utf-8"> <!-- Requisito recomendável -->
 
+        <!-- Título -->
+        <title> Meu Primeiro HTML </title> <!-- Requisito obrigatório -->
+
+        <!-- CSS -->
         <!-- Estilizando tags, ids e classes -->
         <style>
-            h1 { 
-                background: red;
+            
+            /* IDs */
+
+            #cabecalho-um {
+                background: black;
             }
 
-            p {
-                background: green;
+            #cabecalho-dois {
+                background: gray;
             }
 
+            /* Classes */
+            
+            .negrito {
+                font-style: bold;
+            }
+
+            .italico {
+                font-style: italic;
+            }
+
+            .fonte-azul {
+                color: blue;
+            }
+
+            .fonte-azul-claro {
+                color: lightblue;
+            }
+
+            .corpo-texto {
+                background: white;
+            }
+            
             .codigo {
                 background-color: lightgray;  /* Cor de fundo */
                 padding: 5px;                   /* Espaço interno */
@@ -28,24 +58,23 @@
                 overflow: auto;                 /* Garante que se o código for longo, ele terá barras de rolagem */
             }
 
-            code {
-                color: #333; /* Cor do texto */
+            .icons {
+                width: 50px;
             }
 
-            #cabecalho-dois {
-                color: yellow;
-            }
-
-            .italico {
+            /* Tags */
+            h1 { 
                 font-style: italic;
             }
 
-            .corpo-texto {
-                background: white;
+            p {
+                font-size: 20px;
+                font-family: 'Roboto';
+                color: darkcyan;
             }
-
-            .img-icons {
-                width: 50px;
+            
+            code {
+                color: #333; /* Cor do texto */
             }
 
         </style>
@@ -54,29 +83,44 @@
 
     <!-- Corpo do navegador -->
     <body> 
-        <a href = "https://devicon.dev/" target = "_blank">
-        <img class = "img-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" alt = "Logo do HTML5">
-        </a>
-        
-        <h1 id="cabecalho-um" class = "italico borda-esquerda"> <!-- Duas classes -->
-            Título 1
-        </h1> <!-- Título -->
 
-        <h1 id="cabecalho-dois" class = "italico">
-            Título 1
+        <!-- Títulos e Parágrafos -->
+        <h1 id="cabecalho-um" class="fonte-azul-claro" style="font-size: 50px; ">
+            <u> Título 1 - Cabeçalho Um </u>
+        </h1>
+
+        <h1 id="cabecalho-dois" class="fonte-azul" style="font-family: 'Comic Sans MS';">
+            Título 1 - Cabeçalho Dois
         </h1>
         <p> Corpo do texto </p>
 
         <h2> Título 2 </h2>
-        <p style = "background: white;"> Corpo do texto </p>
+        <p class="corpo-texto" style="background: yellow;"> 
+            <b> Corpo do texto </b> <br>
+            <span style="background: violet;"> Corpo do texto </span>
+        </p>
 
         <h3> Título 3 </h3>
-        <p class = "corpo-texto"> Corpo do texto </p>
+        <p class="corpo-texto" > 
+            <i> Corpo do texto </i> <br>
+            <span style="color: aquamarine; background: black;"> Corpo do texto </span>
+        </p>
 
         <h4> Título 4 </h4>        
         <h5> Título 5 </h5>
         <h6> Título 6 </h6>
 
+        <!-- Links -->
+        <!-- Abre em nova guia -->
+        <a href = "https://github.com/afkserrado" target = "_blank"> 
+            Link do meu GitHub <br> <br>
+        </a>
+
+        <!-- Imagens -->
+        <a href = "https://devicon.dev/" target = "_blank">
+            <img class = "icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" alt = "Logo do HTML5 com link para o site devicon.dev">
+        </a>
+        
         <p class = "corpo-texto"> <!-- Parágrafo -->
             Parágrafo: <b> corpo do texto </b>
         </p>
@@ -88,9 +132,6 @@
             X<small>2</small> <br>
             Y<sup>2</sup>
         </p>
-
-        <!-- Link -->
-        <a href = "https://github.com/afkserrado" target = "_blank"> Link </a>
 
         <!-- Citações -->
         <!-- Citação direta curta -->
