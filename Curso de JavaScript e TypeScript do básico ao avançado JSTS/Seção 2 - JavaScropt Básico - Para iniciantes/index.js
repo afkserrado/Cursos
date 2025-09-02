@@ -20,3 +20,20 @@ const resultado = n1 * n2
 console.log("resultado = ", resultado)
 
 console.log(typeof(n1))
+
+let string = "O rato roeu a roupa do rei de roma"
+console.log(string)
+console.log(string.indexOf("tex"))
+console.log(string.indexOf("tex", 4))
+console.log(string.lastIndexOf("o"))
+console.log(string.match(/[a-z]/))
+console.log(string.match(/[a-z]/g))
+console.log(string.search(/[a-z]/))
+console.log(string.replace(/o/g, "#"))
+console.log(string.length)
+console.log(string.slice(0, 2))
+console.log(string.slice(-10, -5))
+console.log(string.slice(10))
+console.log(string.split(' ', 3))
+console.log(string.toUpperCase())
+console.log(string.toLowerCase())
