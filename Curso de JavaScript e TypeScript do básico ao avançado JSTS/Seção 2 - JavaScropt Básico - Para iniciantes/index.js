@@ -125,3 +125,91 @@ console.log(typeof array) // object
 console.log(array instanceof Array) // true
 */
 
+/*
+Aula 31 - Funções
+
+function saudacao() {
+    console.log(`Olá, ${nome}.`)
+    return 123456
+}
+
+let nome = "Fulano"
+let numero = saudacao(nome)
+console.log(numero)
+
+const raiz = function (n) {
+    return n ** 0.5
+}
+
+console.log(raiz(9))
+
+const potencia = (x, y) => {
+    return x ** y
+}
+
+console.log(potencia(2,4))
+*/
+
+/*
+Aula 32 - Objetos 
+
+
+function criaPessoa (nome, sobrenome, idade) {
+    return {
+        nome: nome,
+        sobrenome: sobrenome,
+        idade: idade
+    }
+}
+
+function criaPet (nome, sobrenome, idade) {
+    return {
+        nome, sobrenome, idade
+    }
+}
+
+const casa = {
+    // Propriedades
+    sala: 1,
+    quarto: 2,
+    cozinha: 1,
+    banheiro: 3,
+
+    // Método
+    fala() {
+        console.log(`A casa tem ${this.sala} salas, ${this.quarto} quartos, ${this.cozinha} cozinha e ${this.banheiro} banheiros.`)
+    }
+}
+
+const pessoa1 = criaPessoa("Fulano", "de Tal", 29)
+console.log(pessoa1)
+console.log(pessoa1.nome)
+
+const pet1 = criaPet("Bela", "Amada", 7)
+console.log(pet1)
+
+casa.fala()
+*/
+
+/*
+Aula 33 - Passagem por cópia ou por referência
+*/
+
+const a = {
+    nome: "ABC",
+    sobrenome: "KLM"
+}
+
+const b = a
+const c = {...a}
+
+a.nome = "YXZ"
+
+console.log(a, b, c)
+
+const array = [1, 2, 3]
+const array2 = array
+const array3 = [...array]
+
+array.push(4)
+console.log(array, array2, array3)
