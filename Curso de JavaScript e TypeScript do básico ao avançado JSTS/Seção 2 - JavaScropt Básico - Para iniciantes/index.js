@@ -77,7 +77,6 @@ console.log(num1) // 0.8
 
 /*
 // Aula 27 - Math
-*/
 
 let num1 = 9.57578
 console.log(Math.floor(num1)) // 9
@@ -93,3 +92,36 @@ aleatorio = Math.random() * (10 - 5) + 5
 console.log(aleatorio) // Retorna algum número entre 5 e 10
 
 console.log(100 / 0) // Infinity
+*/
+
+/*
+Aula 29 - Arrays
+
+
+let array = [1, 2, 3, 4]
+console.log(array[1]) // 2
+console.log(array) // [ 1, 2, 3, 4 ]
+
+array[array.length] = 5
+console.log(array) // [ 1, 2, 3, 4, 5 ]
+
+array.push(6) // Adiciona no final
+array.unshift(10) // Adiciona no início
+console.log(array) // [ 10, 1, 2, 3, 4, 5, 6 ]
+
+array.pop(); // Remove do final
+let shiftado = array.shift(); // Remove do início
+console.log(shiftado) // 10
+console.log(array) // [ 1, 2, 3, 4, 5 ]
+
+let deletado = delete array[1]
+console.log(deletado) // true
+console.log(array) // [ 1, <1 empty item>, 3, 4, 5 ]
+
+console.log(array.slice(0, -2)) // [ 1, <1 empty item>, 3 ]
+console.log(array.slice(-3)) // [ 3, 4, 5 ]
+
+console.log(typeof array) // object
+console.log(array instanceof Array) // true
+*/
+
