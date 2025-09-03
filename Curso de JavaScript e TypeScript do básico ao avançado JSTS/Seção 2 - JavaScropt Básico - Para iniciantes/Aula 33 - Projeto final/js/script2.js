@@ -4,7 +4,16 @@ function meuEscopo () {
     const formulario = document.querySelector(".formulario")
     const resultado = document.querySelector(".resultado")
 
+    // Cria um vetor para armazenar os dados
     const pessoas = []
+
+    // Cria um objeto
+    let pessoa = {
+        nome: "",
+        sobrenome: "",
+        peso: "",
+        altura: ""
+    }
 
     function recebeEventoFormulario (evento) {
         // Impede que a página seja recarregada
@@ -16,22 +25,20 @@ function meuEscopo () {
         const peso = document.querySelector(".peso")
         const altura = document.querySelector(".altura")
 
-        // Insere um objeto no final do vetor
-        pessoas.push({
-            nome: nome.value,
-            sobrenome: sobrenome.value,
-            peso: peso.value,
-            altura: altura.value
-        })
+        // Armazena os dados do formulário no objeto
+        pessoa.nome = nome.value
+        pessoa.sobrenome = sobrenome.value
+        pessoa.peso = peso.value
+        pessoa.altura = altura.value
+
+        // Insere o objeto no vetor
+        pessoas.push({...pessoa})
 
         console.log(pessoas)
 
-        // Exibe os dados digitados na página do navegador
         resultado.innerHTML += `<p>${nome.value} ${sobrenome.value}` + ` ${peso.value} ${altura.value}</p>`
     } 
 
-    // Recebe um evento do formulário
-    // Se for "submit", cria um objeto do evento, que será do tipo SubmitEvent, e passa como parâmetro para a função recebeEventoForumulario
     formulario.addEventListener("submit", recebeEventoFormulario)
 }
 
