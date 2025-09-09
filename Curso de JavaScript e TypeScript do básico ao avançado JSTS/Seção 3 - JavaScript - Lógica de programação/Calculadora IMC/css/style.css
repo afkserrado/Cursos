@@ -1,0 +1,84 @@
+/* Importa uma fonte externa*/
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* Raiz do documento CSS */
+:root {
+    /* Criando variáveis globais */
+    --cor-principal: rgb(17, 86, 102); 
+    --cor-principal-escura: rgb(17, 65, 102);
+}
+
+/* Estilização global */
+* {
+    box-sizing: border-box; /* Garante que os elementos não ultrapassem o tamanho esperado ao adicionar padding e bordas */ 
+    
+    outline: 0; /* Borda de foco */
+}
+
+/* Estilização do corpo do HTML */
+body {
+    margin: 0;
+    padding: 0; /* Espaço entre o conteúdo de um elemento e suas bordas */
+    background: var(--cor-principal);
+    font-family: "Open Sans", sans-serif; /* sans-serif é o fallback */
+    font-size: 1.3em; /* "em" é o tamanho padrão */
+    line-height: 1.5em;
+}
+
+/* Estilizando a classe "container" */
+.container {
+    max-width: 640px; /* Largura máxima */
+    margin: 50px auto; /* Margem de 50px no topo e centraliza hor*/
+    background: white;
+    padding: 20px;
+    border-radius: 10px; /* Arredonda os cantos */
+}
+
+/* Estilizando elementos do formulário */
+/* Estiliza todo "input", "label" e "button" dentro de um form */
+form input, form label, form button {
+    display: block;
+    width: 100%; /* Ocupa toda a largura do container pai */
+    margin-bottom: 10px; /* Margem inferior */
+}
+
+/* Estilizando o input */
+form input {
+    font-size: 24px;
+    height: 50;
+    padding: 0 20px;
+}
+
+/* Estilizando o foco no input */
+/* Estilo do input quando é clicado */
+form input:focus {
+    /* Adiciona uma borda de 1px de espessura, sólida e da cor igual a --cor-principal quando o input está focado */
+    outline: 1px solid var(--cor-principal)
+}
+
+/* Estilizando o button */
+form button {
+    border: none;
+    background: var(--cor-principal); /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    font-size: 18px; /* Tamanho da fonte */
+    font-weight: 700; /* Texto no botão em negrito */
+    height: 50px; /* Altura do botão */
+    cursor: pointer; /* Cursor vira mãozinha quando passa em cima */
+    margin-top: 30px; /* Margem acima */
+}
+
+/* Estilizando a passagem do mouse sobre o button */
+form button:hover {
+    background: var(--cor-principal-escura);
+}
+
+.paragrafo-resultado-valido {
+    background: rgb(68, 255, 47);
+    padding: 20px;
+}
+
+.paragrafo-resultado-invalido {
+    background: red;
+    padding: 20px;
+}
