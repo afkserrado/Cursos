@@ -1,0 +1,64 @@
+/* Variável global */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    /* A variável começa com dois traços*/
+    --cor-principal: rgb(17, 86, 102); 
+    --cor-principal-escura: rgb(17, 65, 102);
+}
+
+* {
+    box-sizing: borde-box;
+    outline: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--cor-principal);
+
+    /* sans-serif é o fallback */
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.3em;
+    line-height: 1.5em;
+}
+
+.container {
+    max-width: 640px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form input, form label, form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+form input {
+    font-size: 24px;
+    height: 50;
+    padding: 0 20px;
+}
+
+form input:focus {
+    outline: 1px solid var(--cor-principal)
+}
+
+form button {
+    border: none;
+    background: var(--cor-principal);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+form button:hover {
+    background: var(--cor-principal-escura);
+}
+
