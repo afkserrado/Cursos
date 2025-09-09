@@ -12,7 +12,28 @@
 
     <section class="container">
         <h1>Tabela IMC</h1>
-        <h3>IMC</h3>
+
+        <div class="menus">
+            <p id="menu-IMC">
+                <span style="font-weight: bold;"> IMC </span> <br>
+                Maior que 39.9 <br>
+                Maior que 34.9 <br>
+                Maior que 29.9 <br>
+                Maior que 24.9 <br>
+                Maior que 18.5 <br>
+                Menor que 18.5 <br>
+            </p>
+
+            <p id="menu-nivelIMC">
+                <span style="font-weight: bold;"> Nível IMC </span> <br>
+                Obesidade grau 3 <br>
+                Obesidade grau 2 <br>
+                Obesidade grau 1 <br>
+                Sobrepeso <br>
+                Peso normal <br>
+                Abaixo do peso <br>
+            </p>
+        </div>
 
         <!-- Formulário 
         "action" indica o url para onde os dados serão enviados 
@@ -23,10 +44,10 @@
             "for" conecta o label ao input
             "input" é a caixa do formulário
             -->
-            <label for="peso"> Peso </label>
+            <label for="peso" style="font-weight: bold;"> Peso </label>
             <input type="text" id="peso" name="peso">
 
-            <label for="altura"> Altura </label>
+            <label for="altura" style="font-weight: bold;"> Altura </label>
             <input type="text" id="altura" name="altura">
 
             <button type="submit">Enviar</button>

@@ -82,3 +82,9 @@ form button:hover {
     background: red;
     padding: 20px;
 }
+
+.menus {
+    display: flex;
+    justify-content: left; /* Alinha no centro */
+    gap: 100px; /* Espaço fixo entre as colunas */
+}

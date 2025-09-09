@@ -34,6 +34,9 @@ function enviaEvento(evento) {
     console.log(`IMC = ${imc} | Nível ${nivelIMC}`)
 }
 
+// Monitora os eventos da página e chama uma função em caso de um "submit"
+formulario.addEventListener("submit", enviaEvento)
+
 function calculaIMC(peso, altura) {
     const imc = peso / altura ** 2
     return imc.toFixed(2)
@@ -47,9 +50,6 @@ function calculaNivelIMC(imc) {
     if (imc >= 18.5) {return "Peso normal"}
     if (imc < 18.5) {return "Abaixo do peso"}
 }
-
-// Monitora os eventos da página e chama uma função em caso de um "submit"
-formulario.addEventListener("submit", enviaEvento)
 
 // Cria um elemento HTML do tipo parágrafo e define sua classe inicial
 function criaParagrafo() {
@@ -71,6 +71,6 @@ function enviaResultado(msg, ehValido) {
     }
 
     // Insere a mensagem na página
-    paragrafo.innerHTML = msg
+    paragrafo.innerHTML = msg // Define o conteúdo HTML interno
     resultado.appendChild(paragrafo)
 }
