@@ -2,7 +2,10 @@
 const hoje = new Date(Date.now())
 console.log(hoje)
 
+/*
+// Opção 1
 // Formata a data
+
 const dataFormatada = formatarData(hoje)
 console.log(dataFormatada)
 
@@ -29,7 +32,13 @@ function formatarData(data) {
     const minCorrigido = min >= 10 ? min : `0${min}`
 
     return `${diaSemanaExtenso}, ${dia} de ${mesExtenso} de ${ano} ${horaCorrigida}:${minCorrigido}` 
+}*/
+
+// Opção 2
+const opcoes = {
+    dateStyle: "full",
+    timeStyle: "short"
 }
 
 const data = document.querySelector("#data")
-data.innerHTML = dataFormatada
+data.innerHTML = hoje.toLocaleString("pt-BR", opcoes)
