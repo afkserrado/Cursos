@@ -92,7 +92,6 @@ console.log(dataBrasil)
 
 /*
 Aula 47 - Switch
-*/
 
 const data = new Date("2025-09-09")
 const diaSemana = data.getDay() + 1
@@ -132,3 +131,46 @@ switch (diaSemana) {
 }
 
 console.log(`diaSemana = ${diaSemana}, ${diaSemanaExtenso}`)
+*/
+
+/*
+Aula 50 - Atribuição por desestruturação
+
+
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const [primNumero, segNumero, , quiNumero, ...resto] = numeros
+console.log(primNumero, segNumero, quiNumero, resto)
+console.log(`${'\n'}${resto}`)
+
+const numeros2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+const [, [, , seis]] = numeros2
+console.log(seis)
+*/
+
+/*
+Aula 51 - Atribuição por desestruturação em objetos
+*/
+
+const pessoa = {
+    nome: "Anderson",
+    sobrenome: "Serrado",
+    idade: 0,
+    endereco: {
+        rua: "Rua Aleatória",
+        numero: 300
+    }
+}
+
+const {nome, sobrenome, idade, aniversario = "01/01/1900"} = pessoa
+console.log(nome, sobrenome, aniversario)
+
+const {nome: teste} = pessoa
+console.log(teste)
+console.log("\n")
+
+const {endereco, endereco: {rua, numero: num = 1245}} = pessoa
+console.log(endereco, rua, num)
+console.log("\n")
+
+const {nome: nome2, ...resto} = pessoa
+console.log(nome2, resto)
