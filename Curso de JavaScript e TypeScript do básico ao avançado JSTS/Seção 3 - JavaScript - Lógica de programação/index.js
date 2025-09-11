@@ -215,3 +215,20 @@ do {
     console.log(rand)
 } while (rand !== 10)
  */
+
+/*
+Aula 60
+*/
+
+function maior(n1, n2) {
+    return n1 > n2 ? n1 : n2
+}
+
+let n1 = 10
+let n2 = 10
+
+console.log(maior(n1, n2))
+
+/**/
+
+/**/
