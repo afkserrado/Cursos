@@ -174,3 +174,24 @@ console.log("\n")
 const {nome: nome2, ...resto} = pessoa
 console.log(nome2, resto)
 */
+
+/*
+Aulas 55 e 56 - For
+*/
+const frutas = ["maçã", "uva", "banana"]
+for (let i in frutas) {
+    console.log(frutas[i])
+}
+
+const pessoa = {
+    nome: "Anderson",
+    sexo: "M"
+}
+
+for (let chave in pessoa) {
+    console.log(pessoa[chave])
+}
+
+for (let valor of frutas) {
+    console.log(valor)
+}
