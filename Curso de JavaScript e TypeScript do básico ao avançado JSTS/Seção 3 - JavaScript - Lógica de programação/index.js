@@ -177,7 +177,7 @@ console.log(nome2, resto)
 
 /*
 Aulas 55 e 56 - For
-*/
+
 const frutas = ["maçã", "uva", "banana"]
 for (let i in frutas) {
     console.log(frutas[i])
@@ -195,3 +195,23 @@ for (let chave in pessoa) {
 for (let valor of frutas) {
     console.log(valor)
 }
+*/
+
+/*
+Aula 58 - While, Do While
+
+
+function random(min, max) {
+    const r = Math.random() * (max - min) + min
+    return Math.floor(r)
+}
+
+const min = 1
+const max = 50
+let rand = ""
+
+do {
+    rand = random(min, max)
+    console.log(rand)
+} while (rand !== 10)
+ */
