@@ -218,17 +218,39 @@ do {
 
 /*
 Aula 60
+
+// Retorna o maior valor
+function maior(n1, n2) {return n1 > n2 ? n1 : n2}
+const maior2 = (x, y) => x > y ? x : y
+
+console.log(maior2(100, 1000))
 */
 
-function maior(n1, n2) {
-    return n1 > n2 ? n1 : n2
+/*
+Aula 61
+
+const ehPaisagem = (h, l) => h < l
+console.log(ehPaisagem(400, 600))
+*/
+
+/*
+Aula 62
+*/
+
+function teste(n) {
+    
+    // Verifica se a entrada é um número
+    if (typeof n !== "number") {
+        return n
+    }
+
+    if (n % 3 === 0 && n % 5 === 0) {return "FizzBuzz"}
+    if (n % 3 === 0) {return "Fizz"}
+    if (n % 5 === 0) {return "Buzz"}
+    return n
 }
 
-let n1 = 10
-let n2 = 10
+for (i = 0; i <= 100; i++) {
+    console.log(`${i}: ${teste(i)}`)
+}
 
-console.log(maior(n1, n2))
-
-/**/
-
-/**/
