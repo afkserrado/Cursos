@@ -136,7 +136,6 @@ console.log(`diaSemana = ${diaSemana}, ${diaSemanaExtenso}`)
 /*
 Aula 50 - Atribuição por desestruturação
 
-
 const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 const [primNumero, segNumero, , quiNumero, ...resto] = numeros
 console.log(primNumero, segNumero, quiNumero, resto)
@@ -149,7 +148,7 @@ console.log(seis)
 
 /*
 Aula 51 - Atribuição por desestruturação em objetos
-*/
+
 
 const pessoa = {
     nome: "Anderson",
@@ -174,3 +173,4 @@ console.log("\n")
 
 const {nome: nome2, ...resto} = pessoa
 console.log(nome2, resto)
+*/
