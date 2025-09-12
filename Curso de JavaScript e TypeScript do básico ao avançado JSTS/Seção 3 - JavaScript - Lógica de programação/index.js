@@ -235,7 +235,6 @@ console.log(ehPaisagem(400, 600))
 
 /*
 Aula 62
-*/
 
 function teste(n) {
     
@@ -252,5 +251,78 @@ function teste(n) {
 
 for (i = 0; i <= 100; i++) {
     console.log(`${i}: ${teste(i)}`)
+}
+*/
+
+/*
+Aulas 63 e 64 - Tratamento de erros
+*/
+
+/*
+try {
+    console.log(naoExisto)
+}
+catch (erro) {
+    console.log(`Erro: ${erro}`)
+}
+
+function soma(x, y) {
+    if (typeof x !== "number" || typeof y !== "number") {
+        throw new Error ("x e y precisam ser números.")
+    }
+
+    return x + y
+}
+
+try {
+    console.log(soma(1,2))
+    console.log(soma("1", 2))
+}
+catch(erro) {
+    console.log(erro)
+}
+*/
+
+/*
+try {
+    console.log(a)
+}
+
+catch (erro) {
+    console.log("Tratando o erro")
+}
+
+finally {
+    console.log("Eu sempre sou executado.")
+}
+*/
+
+function retornaHora(data) {
+    if (data && !(data instanceof Date)) {
+        throw new TypeError("Esperando instância de date.")
+    }
+
+    if (!data) {
+        data = new Date()
+    }
+
+    return data.toLocaleTimeString("pt-BR", {
+        hour12: false
+    })
+}
+
+try {
+    const data = new Date ("01-01-1970 12:58:12")
+    const data2 = new Date (abc)
+    const hora = retornaHora(data2)
+    console.log(hora)
+}
+
+catch(erro) {
+    console.log("Erro capturado.")
+}
+
+finally {
+    console.log("Obrigado.")
 }
 
