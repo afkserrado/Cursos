@@ -295,7 +295,6 @@ catch (erro) {
 finally {
     console.log("Eu sempre sou executado.")
 }
-*/
 
 function retornaHora(data) {
     if (data && !(data instanceof Date)) {
@@ -325,4 +324,25 @@ catch(erro) {
 finally {
     console.log("Obrigado.")
 }
+*/
 
+/*
+Aula 65 - setInterval e setTimeout
+
+function horaAtual() {
+    let data = new Date();
+
+    return data.toLocaleTimeString("pt-BR", {hour12: false})
+}
+
+function mostrarHora() {
+    console.log(horaAtual())
+}
+
+// Executa a cada 1 segundo
+const timer = setInterval(mostrarHora, 1000)
+
+setTimeout(function() {
+    clearInterval(timer)
+}, 5000);
+*/
