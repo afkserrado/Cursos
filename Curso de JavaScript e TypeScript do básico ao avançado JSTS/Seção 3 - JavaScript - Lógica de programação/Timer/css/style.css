@@ -10,8 +10,9 @@
 
 /* Estilização global */
 * {
-    box-sizing: border-box; /* Garante que os elementos não ultrapassem o tamanho esperado ao adicionar padding e bordas */ 
-    
+    box-sizing: border-box; /* Garante que os elementos não ultrapassem o tamanho esperado ao adicionar padding e bordas */
+
+    font-family: "Ubuntu", sans-serif; /* sans-serif é o fallback */
     outline: 0; /* Borda de foco */
 }
 
@@ -20,7 +21,6 @@ body {
     margin: 0;
     padding: 0; /* Espaço entre o conteúdo de um elemento e suas bordas */
     background: var(--cor-principal);
-    font-family: "Open Sans", sans-serif; /* sans-serif é o fallback */
     font-size: 1.3em; /* "em" é o tamanho padrão */
     line-height: 1.5em;
 }
@@ -34,41 +34,10 @@ body {
     border-radius: 10px; /* Arredonda os cantos */
 }
 
-/* Estilizando elementos do formulário */
-/* Estiliza todo "input", "label" e "button" dentro de um form */
-form input, form label, form button {
-    display: block;
-    width: 100%; /* Ocupa toda a largura do container pai */
-    margin-bottom: 10px; /* Margem inferior */
+.relogio {
+    font-size: 3em;
 }
 
-/* Estilizando o input */
-form input {
-    font-size: 24px;
-    height: 50;
-    padding: 0 20px;
-}
-
-/* Estilizando o foco no input */
-/* Estilo do input quando é clicado */
-form input:focus {
-    /* Adiciona uma borda de 1px de espessura, sólida e da cor igual a --cor-principal quando o input está focado */
-    outline: 1px solid var(--cor-principal)
-}
-
-/* Estilizando o button */
-form button {
-    border: none;
-    background: var(--cor-principal); /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    font-size: 18px; /* Tamanho da fonte */
-    font-weight: 700; /* Texto no botão em negrito */
-    height: 50px; /* Altura do botão */
-    cursor: pointer; /* Cursor vira mãozinha quando passa em cima */
-    margin-top: 30px; /* Margem acima */
-}
-
-/* Estilizando a passagem do mouse sobre o button */
-form button:hover {
-    background: var(--cor-principal-escura);
+.pausado {
+    color: red
 }

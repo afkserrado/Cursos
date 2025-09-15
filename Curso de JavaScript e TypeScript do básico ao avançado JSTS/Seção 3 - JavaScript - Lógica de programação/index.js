@@ -45,7 +45,6 @@ console.log(nivel)
 /*
 Aula 46 - Date
 
-
 let data = new Date()
 console.log(data)
 console.log(data.toString())
