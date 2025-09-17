@@ -1,8 +1,6 @@
 /*
-Aula 68
-*/
+Aula 68 e 69 - Declaração de funções
 
-/*
 // 1️⃣ Função nativa do JS (exemplo: parseInt)
 console.log(parseInt("42")); // Converte a string "42" em número 42
 console.log(parseInt("101", 2)); // Converte a string "101" como binário (radix 2) -> 5
@@ -74,7 +72,6 @@ const potencia = (x, y) => x ** y; // Retorna x elevado a y
 console.log(potencia(2, 3)); // 8
 
 console.log(raiz(9)); // 3
-*/
 
 function funcao() {
     // "arguments" só funciona com "function", não com arrow functions
@@ -130,3 +127,58 @@ function operacao(operador, acumulador, ...operandos) {
 }
 
 operacao("+", 1, 20, 30, 40, 50)
+*/
+
+/*
+Aula 70 - Retornos
+
+function criaPessoa(nome, sobrenome) {
+    return {nome, sobrenome} // Como as chaves e as variáveis possuem o mesmo nome, o JS já assime que o parâmetro "nome" é valor da chave "nome"
+}
+
+function falaFrase(comeco) {
+    function falaResto(resto) {
+        return comeco + " " + resto
+    }
+
+    return falaResto
+}
+
+const fala = falaFrase("Olá")
+console.log(fala) // [Function: falaResto]
+const resto = fala("mundo!")
+console.log(resto) // Olá mundo!
+
+function criaMultiplicador(multiplicador) {
+    return function(n) {
+        return n * multiplicador
+    }
+}
+
+const duplica = criaMultiplicador(2)
+const triplica = criaMultiplicador(3)
+const quadriplica = criaMultiplicador(4)
+
+console.log(duplica)
+console.log(triplica)
+console.log(quadriplica)
+
+console.log(duplica(2))
+console.log(triplica(2))
+console.log(quadriplica(2))
+*/
+
+/*
+Aula 72 - Closures
+*/
+
+function retornaFuncao() {
+    const nome = "Luiz"
+    return function() {
+        return nome
+    }
+}
+
+const funcao = retornaFuncao()
+console.log(funcao)
+console.log(funcao())
