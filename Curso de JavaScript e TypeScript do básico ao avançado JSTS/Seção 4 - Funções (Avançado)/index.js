@@ -170,7 +170,6 @@ console.log(quadriplica(2))
 
 /*
 Aula 72 - Closures
-*/
 
 function retornaFuncao() {
     const nome = "Luiz"
@@ -182,3 +181,126 @@ function retornaFuncao() {
 const funcao = retornaFuncao()
 console.log(funcao)
 console.log(funcao())
+*/
+
+/*
+Aula 73 - Callback
+
+function rand(min = 100, max = 1000) {
+    const num = Math.random() * (max - min) + min
+    return Math.floor(num)
+}
+
+function f1(callback) {
+    setTimeout(function() {
+        console.log("f1")
+        if (callback) callback()
+    }, rand())
+}
+
+function f2(callback) {
+    setTimeout(function() {
+        console.log("f2")
+        if (callback) callback()
+    }, rand())
+}
+
+function f3(callback) {
+    setTimeout(function() {
+        console.log("f3")
+        if (callback) callback()
+    }, rand())
+}
+
+f1(f1Callback)
+
+function f1Callback() {
+    f2(f2Callback)
+}
+
+function f2Callback() {
+    f3(f3Callback)
+}
+
+function f3Callback() {
+    console.log("Olá mundo!")
+}
+/*
+
+/*
+Aula 74 - IIFE
+
+(function(nome2, num) {
+    const nome = "Anderson"
+    console.log(nome, nome2, num)
+})("Felipe", 0)
+
+const nome = "Serrado"
+*/
+
+/*
+Aula 75 - Factory Functions
+
+function criaPessoa(nome, sobrenome) {
+    return {
+        nome,
+        sobrenome,
+        nomeIdade: function(idade) {
+            return `${nome} tem ${idade} anos.`
+        },
+        nomePeso() {
+            return `${nome} tem ${this.peso} kilos.`
+        },
+
+        peso: 70
+    }
+}
+
+const p1 = criaPessoa("Fulano", "de Tal")
+const p2 = criaPessoa("Beltrano", "Ciclano")
+console.log(p1.nomeIdade(29))
+console.log(p2.nomeIdade(30))
+console.log(p2.nomePeso())
+*/
+
+function criaPessoa(nome, sobrenome, peso, idade, altura) {
+    return {
+        nome,
+        sobrenome,
+        peso,
+        idade,
+        altura,
+
+        // imc é método
+        imc() {
+            const valor = this.peso/(this.altura ** 2)
+            return valor.toFixed(2)
+        },
+
+        // Getter
+        // imc2 é atributo
+        get imc2() {
+            const valor = this.peso/(this.altura ** 2)
+            return valor.toFixed(2)
+        },
+
+        // Setter
+        set nomeCompleto(valor) {
+            valor = valor.split(" ")
+            this.nome = valor.shift()
+            this.sobrenome = valor.pop()
+            console.log(valor)
+            console.log(`O nome é ${this.nome} e o sobrenome é ${this.sobrenome}`)
+        },
+
+        fale() {
+            return `${this.nome} ${this.sobrenome} tem ${this.idade} anos, pesa ${this.peso} quilos e seu IMC é ${this.imc()}.`
+        }
+    }
+}
+
+const p1 = criaPessoa("Fulano", "de Tal", 70, 29, 1.70)
+console.log(p1.fale())
+console.log(p1.imc())
+console.log(p1.imc2)
+p1.nomeCompleto = "Fulano de Ciclano"
