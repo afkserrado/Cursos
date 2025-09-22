@@ -321,3 +321,16 @@ const p1 = new Pessoa("Fulano", "de Tal")
 console.log(p1, p1.nome, p1.sobrenome)
 p1.metodo()
 */
+
+/*
+Aula 79 - Recursividade
+*/
+
+function recursiva(max) {
+    console.log(max)
+    if (max >= 10) return
+    max++
+    recursiva(max)
+}
+
+recursiva(-10)
