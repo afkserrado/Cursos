@@ -261,7 +261,6 @@ const p2 = criaPessoa("Beltrano", "Ciclano")
 console.log(p1.nomeIdade(29))
 console.log(p2.nomeIdade(30))
 console.log(p2.nomePeso())
-*/
 
 function criaPessoa(nome, sobrenome, peso, idade, altura) {
     return {
@@ -304,3 +303,21 @@ console.log(p1.fale())
 console.log(p1.imc())
 console.log(p1.imc2)
 p1.nomeCompleto = "Fulano de Ciclano"
+*/
+
+/*
+Aula 77 - Construction Function
+
+function Pessoa(nome, sobrenome) {
+    this.nome = nome
+    this.sobrenome = sobrenome
+
+    this.metodo = function () {
+        console.log(this.nome + ": sou um método")
+    }
+}
+
+const p1 = new Pessoa("Fulano", "de Tal")
+console.log(p1, p1.nome, p1.sobrenome)
+p1.metodo()
+*/
