@@ -40,7 +40,7 @@ console.log(nomeCompleto)
 
 /*
 Aula 82 - Splice
-*/
+
 
 const nomes = ['Maria', 'João', 'Eduardo', 'Gabriel', 'Júlia']
 let removidos = ""
@@ -53,3 +53,14 @@ nomes.splice(0, 0, "Rafael") // unshift
 removidos = nomes.splice(-1, 1) // pop
 removidos = nomes.splice(0, 1) // shift
 console.log(nomes, removidos)
+*/
+
+/*
+Aula 83 - Concatenando arrays
+*/
+
+const a1 = [1, 2, 3]
+const a2 = [4, 5, 6]
+//const a3 = a1.concat(a2, 25)
+const a3 = [...a1, ...a2, 27, ...[16, 14, 100]]
+console.log(a3)
