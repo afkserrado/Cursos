@@ -101,34 +101,93 @@ console.log(nameFiltered)
 // Map sempre retorna um array
 // Filter retorna um vetor menor ou igual ao original, sem modificar o valor dos elementos
 // Map retorna um vetor do mesmo tamanho do original, mas com seus valores modificados por alguma operação
- const numeros = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27]
+/*
+const numeros = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27]
 
- const numDobro = numeros.map(valor => valor * 2)
- console.log(numDobro)
+const numDobro = numeros.map(valor => valor * 2)
+console.log(numDobro)
 
- const pessoas = [
-    {nome: 'Luiz', idade: 62},
-    {nome: 'Maria', idade: 23},
-    {nome: 'Eduardo', idade: 55},
-    {nome: 'Letícia', idade: 19},
-    {nome: 'Rosana', idade: 32},
-    {nome: 'Wallace', idade: 47},
+const pessoas = [
+{nome: 'Luiz', idade: 62},
+{nome: 'Maria', idade: 23},
+{nome: 'Eduardo', idade: 55},
+{nome: 'Letícia', idade: 19},
+{nome: 'Rosana', idade: 32},
+{nome: 'Wallace', idade: 47},
 ]
 
 const nomes = pessoas.map(obj => obj.nome)
 console.log(nomes)
 
 /* const idades = pessoas.map(function(obj) {
-    delete obj.nome
-    return obj
+delete obj.nome
+return obj
 })
 console.log(idades)
 
 const idades2 = pessoas.map(obj => ({idade: obj.idade}))
-console.log(idades2) */
+console.log(idades2)
 
 const ids = pessoas.map((obj, index) => ({...obj, id: index}))
 console.log(ids)
 
 console.log(pessoas)
+*/
 
+// Reduce
+// Soma todos os números
+// Se o valor inicial não for especificado como parâmetro, o primeiro valor do array será usado como o valor inicial do acumulador
+/*
+const numeros = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27]
+const total = numeros.reduce(function(acumulador, valor) {
+    acumulador += valor
+    return acumulador
+})
+
+console.log(total)
+
+const pares = numeros.reduce(function(acumulador, valor) {
+    if (valor % 2 === 0) acumulador.push(valor)
+    return acumulador
+}, [])
+
+console.log(pares)
+
+const par = numeros.reduce(function(acumulador, valor) {
+    if (valor % 2 === 0) acumulador += valor
+    return acumulador
+}, 0)
+
+console.log(par)
+
+const pessoas = [
+{nome: 'Luiz', idade: 62},
+{nome: 'Maria', idade: 23},
+{nome: 'Eduardo', idade: 55},
+{nome: 'Letícia', idade: 19},
+{nome: 'Rosana', idade: 75},
+{nome: 'Wallace', idade: 47},
+]
+
+const maisVelha = pessoas.reduce((acumulador, valor) => {
+    if (valor.idade > acumulador.idade) return valor
+    return acumulador
+})
+
+console.log(maisVelha.nome)
+*/
+
+/*
+const numeros = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27]
+const somaPares = numeros
+    .filter(valor => valor % 2 === 0)
+    .map(valor => valor * 2)
+    .reduce((acumulador, valor) => acumulador += valor)
+
+console.log(somaPares)
+*/
+
+const numeros = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27]
+numeros.forEach((valor, indice) => {
+    console.log(`Index: ${indice}; Valor: ${valor}`)
+})
