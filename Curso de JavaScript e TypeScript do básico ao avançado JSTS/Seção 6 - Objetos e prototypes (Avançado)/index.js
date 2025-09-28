@@ -1,4 +1,4 @@
-// Objeto literal
+// Objeto literal (OK)
 /*
 const pessoa = {
     nome: 'Fulano',
@@ -30,7 +30,7 @@ for (let chave in pessoa) {
 }
 */
 
-// Factory functions
+// Factory functions (OK)
 /*
 function criaPessoa(nome, sobrenome) {
     return {
@@ -52,7 +52,7 @@ console.log(p1.nomeCompleto)
 console.log(p1.nomeCompleto2())
 */
 
-// Constructor functions
+// Constructor functions (OK)
 /*
 function Pessoa(nome, sobrenome) {
     this.nome = nome
@@ -68,9 +68,7 @@ const p1 = new Pessoa('Fulano', 'de Tal')
 console.log(p1.nomeCompleto())
 */
 
-/*
-defineProperty e defineProperties
-*/
+// defineProperty e defineProperties
 /*
 function Produto(nome, preco, estoque) {
     this.nome = nome
@@ -109,9 +107,7 @@ p1.estoque = 500000
 console.log(p1)
 */
 
-/*
-Getters e setters
-*/
+// Getters e setters
 /*
 function Produto(nome, preco, estoque) {
     this.nome = nome;
@@ -144,9 +140,166 @@ p1.estoque = 500000;  // Agora atribui um número
 console.log(p1.estoque);  // 500000, pois o valor foi alterado com sucesso
 */
 
+// Métodos para objetos
 /*
-Métodos para objetos
+const produto = {nome: 'produto', preco: 1.8}
+const produto2 = Object.assign({}, produto)
+Object.defineProperty(produto, 'nome', {
+    writable: false,
+    configurable: false
+})
+
+console.log(produto2)
+console.log(Object.getOwnPropertyDescriptor(produto, 'nome'))
+console.log(Object.keys(produto))
+console.log(Object.values(produto))
+console.log(Object.entries(produto))
+
+for (let [chave, valor] of Object.entries(produto)) {
+    console.log(chave, valor)
+}
 */
 
+// Prototypes
+/*
+function Pessoa (nome, sobrenome) {
+    this.nome = nome
+    this.sobrenome = sobrenome
+    
+    Pessoa.prototype.nomeCompleto = function() {
+        return this.nome + ' ' + this.sobrenome
+    }
+}
 
+const p1 = new Pessoa('Fulano', 'de Tal')
+console.log(p1.nomeCompleto())
 
+// Cadeia: p1 -> __proto__ (Pessoa.prototybe) --> Object.prototype
+*/
+
+// Manipulação de prototypes
+/*
+const objA = {
+    chaveA: 'A'
+}
+
+const objB = {
+    chaveB: 'B'
+}
+
+const objC = Object()
+objC.chaveC = 'C'
+
+Object.setPrototypeOf(objB, objA)
+Object.setPrototypeOf(objC, objB)
+console.log(objB.chaveA)
+console.log(objC.chaveB, objC.chaveA)
+console.log(Object.getPrototypeOf(objA))
+
+function Produto(nome, preco) {
+    this.nome = nome
+    this.preco = preco
+}
+
+// É recomendado definir os métodos fora da função
+Produto.prototype.desconto = function(percentual) {
+    this.preco = (100 - percentual) / 100 * this.preco
+}
+
+Produto.prototype.aumento = function(percentual) {
+    this.preco = (100 + percentual) / 100 * this.preco
+}
+
+const p1 = new Produto('Camiseta', 50)
+//p1.desconto(100)
+p1.aumento(100)
+console.log(p1)
+
+const p2 = {
+    nome: 'Caneca',
+    preco: 15
+}
+
+Object.setPrototypeOf(p2, Produto.prototype)
+p2.aumento(100)
+console.log(p2.preco)
+
+const p3 = Object.create(Produto.prototype, {
+    preco: {
+        writable: true,
+        configurable: true,
+        enumerable: true,
+        value: 99
+    },
+
+    tamanho: {
+        writable: true,
+        configurable: true,
+        enumerable: true,
+        value: 42
+    }
+})
+
+console.log(p3)
+*/
+
+// Herança
+/*
+function Produto(nome, preco) {
+    this.nome = nome
+    this.preco = preco
+}
+
+Produto.prototype.desconto = function(montante) {
+    this.preco -= montante
+}
+
+Produto.prototype.aumento = function(montante) {
+    this.preco += montante
+}
+
+function Camiseta(nome, preco, cor) {
+    Produto.call(this, nome, preco)
+    this.cor = cor
+}
+
+// Cria um novo objeto que vazio que tem Produto.prototype como protótipo
+// Camiseta aponta para esse objeto criado
+Camiseta.prototype = Object.create(Produto.prototype)
+Camiseta.prototype.constructor = Camiseta // Restaura o constructor
+
+const camiseta = new Camiseta('Regata', 7.5, 'Preta')
+const produto = new Produto('Gen', 111)
+camiseta.aumento(100)
+console.log(camiseta.preco)
+
+console.log(produto)
+console.log(camiseta)
+
+function Caneca(nome, preco, material, estoque) {
+    Produto.call(this, nome, preco)
+    this.material = material
+    
+    Object.defineProperty(this, 'estoque', {
+        enumerable: true,
+        configurable: false,
+        
+        // Comportamentos do atributo estoque
+        get: function() {
+            return estoque
+        },
+
+        set: function(valor) {
+            if (typeof valor !== 'number') return
+            estoque = valor
+        }
+    })
+}
+
+Caneca.prototype = Object.create(Produto.prototype)
+Caneca.prototype.constructor = Caneca
+
+const caneca = new Caneca('Caneca', 13, 'Plástico', 5)
+caneca.estoque = 100
+console.log(caneca.estoque)
+*/
