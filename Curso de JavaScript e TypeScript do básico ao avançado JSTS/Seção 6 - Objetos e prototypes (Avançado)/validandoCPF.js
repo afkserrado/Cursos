@@ -57,13 +57,20 @@ cpfValido.prototype.criaDigito = function(cpfParcial) {
 
 // Método
 cpfValido.prototype.isSequencia = function() {
-    for (let char of this.cpfLimpo) {
+    // Retorna uma string, repetindo o mesmo caractere n vezes
+    const sequencia = this.cpfLimpo[0].repeat(this.cpfLimpo.length)
+
+    // Verifica as duas strings são iguais
+    if (sequencia === this.cpfLimpo) return true
+    return false
+    
+    /*for (let char of this.cpfLimpo) {
         //console.log(char)
         if (char !== this.cpfLimpo[0]) {
             return false
         }
     }
-    return true
+    return true*/
 }
 
 const cpf = new cpfValido('705.784.451-52')
