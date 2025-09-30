@@ -303,3 +303,47 @@ const caneca = new Caneca('Caneca', 13, 'Plástico', 5)
 caneca.estoque = 100
 console.log(caneca.estoque)
 */
+
+// Factory functions + Prototype
+/*
+// Padrão 1: Herança prototípica
+// Factory function
+function criaPessoa(nome, sobrenome) {
+    // Objeto literal que representa o prototype da classe
+    const pessoaPrototype = {
+        falar() {
+            console.log(`${this.nome} está falando.`)
+        }
+    }
+    
+    // Cria um objeto vazio, cujo prototype é pessoaPrototype
+    return Object.create(pessoaPrototype, {
+        nome: { value: nome },
+        sobrenome: { value: sobrenome }
+    })
+}
+
+// Padrão 2: Composição de objetos
+// Objeto literal
+const falar = {
+    falar() {
+        console.log(`${this.nome} está falando.`)
+    }
+}
+
+// Cria um objeto vazia e copia as propriedades do objeto literal falar para o pessoaPrototype
+const pessoaPrototype = Object.assign({}, falar)
+
+// Factory function
+function criaPessoa(nome, sobrenome) {
+    // Cria um objeto vazio, cujo prototype é pessoaPrototype
+    return Object.create(pessoaPrototype, {
+        nome: { value: nome },
+        sobrenome: { value: sobrenome }
+    })
+}
+
+const p1 = criaPessoa('Fulano', 'de Tal')
+console.log(p1)
+p1.falar()
+*/
