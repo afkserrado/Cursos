@@ -1,4 +1,4 @@
-// Objeto literal (OK)
+// Objeto literal
 /*
 const pessoa = {
     nome: 'Fulano',
@@ -30,7 +30,7 @@ for (let chave in pessoa) {
 }
 */
 
-// Factory functions (OK)
+// Factory functions
 /*
 function criaPessoa(nome, sobrenome) {
     return {
@@ -52,7 +52,7 @@ console.log(p1.nomeCompleto)
 console.log(p1.nomeCompleto2())
 */
 
-// Constructor functions (OK)
+// Constructor functions 
 /*
 function Pessoa(nome, sobrenome) {
     this.nome = nome
@@ -349,14 +349,13 @@ p1.falar()
 */
 
 // Estrutura de dados Map
-/**/
+/*
 const pessoas = [
     {id: 3, nome: 'Luiz'},
     {id: 2, nome: 'Maria'},
     {id: 1, nome: 'Helena'}
 ]
 
-/*
 const novasPessoas = {}
 for (const pessoa of pessoas) {
     const { id } = pessoa
@@ -364,7 +363,6 @@ for (const pessoa of pessoas) {
 }
 
 console.log(novasPessoas)
-*/
 
 const novasPessoas = new Map()
 for (const pessoa of pessoas) {
@@ -375,9 +373,9 @@ for (const pessoa of pessoas) {
 console.log(novasPessoas)
 console.log(novasPessoas.get(2))
 
-/*for (const [identifier, {id, nome}] of novasPessoas) {
+for (const [identifier, {id, nome}] of novasPessoas) {
     console.log(identifier, id, nome)
-}*/
+}
 
 for (const pessoa of novasPessoas.values()) {
     console.log(pessoa)
@@ -385,3 +383,4 @@ for (const pessoa of novasPessoas.values()) {
 
 novasPessoas.delete(2)
 console.log(novasPessoas)
+*/
