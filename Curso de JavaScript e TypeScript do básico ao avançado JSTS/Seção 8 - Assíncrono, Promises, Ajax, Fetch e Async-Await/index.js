@@ -26,6 +26,14 @@ let minhaPromise = new Promise(function executor(resolve, reject) {
 });
 
 // resolve e reject são funções de callback e parâmetros da função executor
+
+Estados da promise:
+
+pending: Em execução (ainda não terminou) -> Vai virar fulfilled ou rejected
+
+fulfilled: Sucesso, valor disponível -> Vai pro .then()
+
+rejected: Falha, erro disponível -> Vai pro .catch()
 */
 
 function rand(min, max) {
@@ -51,7 +59,7 @@ function esperar(msg, tempo) {
 esperar('Conexão com o BD.', rand(1, 3))
     .then(resposta => { // Função de callback
         console.log(resposta)
-        return esperar('Buscando dados na base.', rand(1, 3))
+        return esperar('Buscando dados na base.', rand(1, 3)) // Devolve um valor para o próximo then
     })
     .then(resposta => {
         console.log(resposta)
@@ -121,3 +129,23 @@ baixaPagina()
         console.log('Erro: '+ erro)
     })
 */
+
+// Async e Await
+async function executa() {
+    try {
+        const fase1 = await esperar('Fase 1', 3000)
+        console.log(fase1)
+
+        const fase2 = await esperar('Fase 2', 1000)
+        console.log(fase2)
+
+        const fase3 = await esperar('Fase 3', 2000)
+        console.log(fase3)
+    }
+
+    catch(erro) {
+        console.log(erro)
+    }
+}
+
+executa()
