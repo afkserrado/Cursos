@@ -5,7 +5,7 @@ Operações síncronas são aquelas que executam uma de cada vez e a próxima op
 Operações assíncronas são aquelas que não precisam esperar a execução de uma operação anterior para começar. Elas são executadas em paralelo, permitindo que o código continue executando enquanto espera por uma resposta (como uma requisição de rede, leitura de arquivos, etc.).
 */
 
-// Promise
+// Promises
 /*
 → Conceito
 A Promise é um objeto em JavaScript usado para representar a conclusão ou falha de uma operação assíncrona. Ela serve para gerenciar tarefas que demoram para ser concluídas (como requisições de rede ou leitura de arquivos) de forma mais legível e controlada. Uma Promise recebe uma função de executor como parâmetro, que, por sua vez, recebe dois outros parâmetros: resolve e reject. O resolve é chamado quando a operação é bem-sucedida, e o valor passado para ele é a resposta que será passada para o manipulador do .then(). O reject, por outro lado, é chamado quando há um erro na operação, e o valor passado para ele é o erro que será tratado pelo .catch().
@@ -14,7 +14,7 @@ A Promise é um objeto em JavaScript usado para representar a conclusão ou falh
 
 → Estrutura
 
-let minhaPromise = new Promise((resolve, reject) => {
+let minhaPromise = new Promise(function executor(resolve, reject) {
     // Operação assíncrona aqui
     let sucesso = true;  // Simulação de uma condição
 
@@ -25,6 +25,7 @@ let minhaPromise = new Promise((resolve, reject) => {
     }
 });
 
+// resolve e reject são funções de callback e parâmetros da função executor
 */
 
 function rand(min, max) {
@@ -35,13 +36,18 @@ function rand(min, max) {
 
 function esperar(msg, tempo) {
     return new Promise((resolve, reject) => { // Retorna uma promise
-        if (typeof msg !== 'string') reject(new Error('Erro'))
         setTimeout(() => { // Executa após o tempo de espera
-        resolve(msg) // Retorna a msg
-    }, tempo); // Tempo de espera em milissegundos
+            if (typeof msg !== 'string') {
+                reject('Um erro foi encontrado.')
+                return
+            }
+            
+            resolve(msg + ' (passei na promise)') // Retorna a msg
+        }, tempo); // Tempo de espera em milissegundos
     })
 }
 
+/*
 esperar('Conexão com o BD.', rand(1, 3))
     .then(resposta => { // Função de callback
         console.log(resposta)
@@ -59,4 +65,59 @@ esperar('Conexão com o BD.', rand(1, 3))
     })
 
 console.log('Mensagem que será exibida em paralelo.')
+*/
 
+/*
+const promises = [
+    //'Primeiro valor',
+    esperar('Promise 1', rand(1, 3)),
+    esperar('Promise 2', rand(1, 3)),
+    esperar('Promise 3', rand(1, 3)),
+    esperar(1000, rand(1, 3)),
+    //'Outro valor'
+]
+*/
+
+/*
+// Tenta resolver todas as promises
+Promise.all(promises)
+    .then(function(valor) {
+        console.log(valor)
+    })
+    .catch(function(erro) {
+        console.log(erro)
+    })
+*/
+
+/*
+// Retorna a primeira promise ou erro encontrado
+Promise.race(promises)
+    .then(function(valor) {
+        console.log(valor)
+    })
+    .catch(function(erro) {
+        console.log(erro)
+    })
+*/
+
+/*
+function baixaPagina() {
+    const emCache = true
+
+    if(emCache) {
+        // Resolve a promise imediatamente com o valor passado para ela
+        return Promise.resolve('Página em cache')
+    }
+    else {
+        return esperar('Baixei a página', 3000)
+    }
+}
+
+baixaPagina()
+    .then(dadosPagina => {
+        console.log(dadosPagina)
+    })
+    .catch(erro => {
+        console.log('Erro: '+ erro)
+    })
+*/
