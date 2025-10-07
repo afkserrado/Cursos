@@ -131,6 +131,7 @@ baixaPagina()
 */
 
 // Async e Await
+/*
 async function executa() {
     try {
         const fase1 = await esperar('Fase 1', 3000)
@@ -149,3 +150,4 @@ async function executa() {
 }
 
 executa()
+*/
