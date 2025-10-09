@@ -16,11 +16,50 @@ const request = obj => {
         // Verifica o status da resposta
         if(xhr.status >= 200 && xhr.status < 300) {
             obj.success(xhr.responseText)
+            //console.log('Resposta: ' + xhr.responseText)
         }
         else {
             obj.error(xhr.statusText)
         }
     })
+}
+
+// Captura cliques em  qualquer parte do documento (página)
+document.addEventListener('click', e => {
+    e.preventDefault()
+    const el = e.target
+    const tag = el.tagName.toLowerCase() // retorna o nome da tag html
+    //console.log(tag)
+
+    // Verifica se a tag html é do tipo 'a' (links)
+    if (tag === 'a') {
+        carregaPagina(el)
+    }
+})
+
+function carregaPagina(el) {
+    const href = el.getAttribute('href')
+    //console.log(href)
+
+    request({
+        method: 'GET',
+        url: href,
+        success(response) {
+            carregaResultado(response)
+        },
+        
+        error(errorText) {
+            console.log(errorText)
+        }
+    })
+}
+
+function carregaResultado(response) {
+    //console.log(response)
+    const resultado = document.querySelector('.resultado')
+    //console.log(resultado)
+    resultado.innerHTML = response // Interpreta as tags
+    c//onsole.log(resultado.innerHTML)
 }
 
 /*
