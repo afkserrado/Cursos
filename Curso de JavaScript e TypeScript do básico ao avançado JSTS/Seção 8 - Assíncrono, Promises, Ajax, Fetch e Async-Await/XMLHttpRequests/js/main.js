@@ -41,7 +41,7 @@ function carregaPagina(el) {
     const href = el.getAttribute('href')
     //console.log(href)
 
-    request({
+    const objConfig = {
         method: 'GET',
         url: href,
         success(response) {
@@ -51,7 +51,9 @@ function carregaPagina(el) {
         error(errorText) {
             console.log(errorText)
         }
-    })
+    }
+
+    request(objConfig)
 }
 
 function carregaResultado(response) {
@@ -59,7 +61,7 @@ function carregaResultado(response) {
     const resultado = document.querySelector('.resultado')
     //console.log(resultado)
     resultado.innerHTML = response // Interpreta as tags
-    c//onsole.log(resultado.innerHTML)
+    //console.log(resultado.innerHTML)
 }
 
 /*
