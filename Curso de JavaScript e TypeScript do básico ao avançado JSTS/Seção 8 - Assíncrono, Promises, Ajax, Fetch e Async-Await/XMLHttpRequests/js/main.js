@@ -1,69 +1,3 @@
-// Função que faz uma requisição HTTP assíncrona
-const request = obj => {
-    // Cria um objeto para enviar requisições HTTP
-    const xhr = new XMLHttpRequest()
-
-    // Prepara a requisição HTTP para ser enviada
-    // obj.method: define o método HTTP (GET, POST, PUT etc.)
-    // obj.url: URL para onde a requisição será enviada
-    // true: indica que a requisição será assíncrona, ou seja, o código pode continuar executando enquanto espera pela resposta
-    xhr.open(obj.method, obj.url, true)
-    xhr.send() // Envia a requisição
-
-    // Escuta a resposta da requisição
-    // Chama a função de callback quando a requisição é completada (load)
-    xhr.addEventListener('load', () => { 
-        // Verifica o status da resposta
-        if(xhr.status >= 200 && xhr.status < 300) {
-            obj.success(xhr.responseText)
-            //console.log('Resposta: ' + xhr.responseText)
-        }
-        else {
-            obj.error(xhr.statusText)
-        }
-    })
-}
-
-// Captura cliques em  qualquer parte do documento (página)
-document.addEventListener('click', e => {
-    e.preventDefault()
-    const el = e.target
-    const tag = el.tagName.toLowerCase() // retorna o nome da tag html
-    //console.log(tag)
-
-    // Verifica se a tag html é do tipo 'a' (links)
-    if (tag === 'a') {
-        carregaPagina(el)
-    }
-})
-
-function carregaPagina(el) {
-    const href = el.getAttribute('href')
-    //console.log(href)
-
-    const objConfig = {
-        method: 'GET',
-        url: href,
-        success(response) {
-            carregaResultado(response)
-        },
-        
-        error(errorText) {
-            console.log(errorText)
-        }
-    }
-
-    request(objConfig)
-}
-
-function carregaResultado(response) {
-    //console.log(response)
-    const resultado = document.querySelector('.resultado')
-    //console.log(resultado)
-    resultado.innerHTML = response // Interpreta as tags
-    //console.log(resultado.innerHTML)
-}
-
 /*
 1. HTTP (Hypertext Transfer Protocol)
 HTTP é um protocolo de comunicação usado para transferir dados pela web. Ele define como as mensagens são enviadas e recebidas entre os clientes (geralmente navegadores web) e os servidores.
@@ -78,11 +12,10 @@ Uma requisição HTTP é o pedido enviado de um cliente para um servidor para ob
 A requisição HTTP é feita quando acessamos um site, fazemos login, enviamos dados em um formulário, etc.
 
 A requisição é composta por várias partes:
-
-Método HTTP: Define a ação a ser realizada (como GET, POST, PUT, DELETE).
-URL: O endereço do recurso no servidor (como https://api.exemplo.com/dados).
-Cabeçalhos (Headers): Informações adicionais, como tipo de dados (JSON, HTML, etc.), autenticação, etc.
-Corpo (Body): Apenas para alguns tipos de requisição (como POST), onde são enviados dados.
+    - Método HTTP: Define a ação a ser realizada (como GET, POST, PUT, DELETE).
+    - URL: O endereço do recurso no servidor (como https://api.exemplo.com/dados).
+    - Cabeçalhos (Headers): Informações adicionais, como tipo de dados (JSON, HTML, etc.), autenticação, etc.
+    - Corpo (Body): Apenas para alguns tipos de requisição (como POST), onde são enviados dados.
 
 Exemplos de métodos HTTP:
 GET: Solicita dados do servidor (ex: abrir uma página).
@@ -92,9 +25,9 @@ DELETE: Exclui dados no servidor.
 
 3. Resposta HTTP (HTTP Response)
 Após uma requisição ser feita, o servidor responde com uma resposta HTTP. Essa resposta inclui:
-Código de Status: Indica se a requisição foi bem-sucedida ou se ocorreu algum erro.
-Cabeçalhos de Resposta: Informações adicionais, como tipo de conteúdo.
-Corpo da Resposta: Os dados solicitados (se a requisição foi bem-sucedida).
+    - Código de Status: Indica se a requisição foi bem-sucedida ou se ocorreu algum erro.
+    - Cabeçalhos de Resposta: Informações adicionais, como tipo de conteúdo.
+    - Corpo da Resposta: Os dados solicitados (se a requisição foi bem-sucedida).
 
 4. Status da Requisição (HTTP Status Code)
 O código de status HTTP é um número enviado pelo servidor na resposta para indicar o resultado da requisição. Ele é composto por três dígitos e segue um padrão de categorias.
@@ -141,3 +74,62 @@ Requisição HTTP: Pedido enviado de um cliente para um servidor.
 Métodos HTTP: Como GET, POST, PUT, DELETE, que definem a ação da requisição.
 Status da Requisição: Código numérico indicando o resultado da requisição, como 200 OK (sucesso) ou 404 Not Found (erro).
 */
+
+// Função que faz uma requisição HTTP assíncrona
+function request(obj) {
+    
+    // Cria um objeto para enviar requisições HTTP
+    const xhr = new XMLHttpRequest();
+
+    // Prepara a requisição HTTP para ser enviada
+    // obj.method: define o método HTTP (GET, POST, PUT etc.)
+    // obj.url: URL para onde a requisição será enviada
+    // true: indica que a requisição será assíncrona, ou seja, o código pode continuar executando enquanto espera pela resposta
+    xhr.open(obj.method, obj.url, true);
+    xhr.send();
+
+    // Escuta a resposta da requisição
+    // Chama a função de callback quando a requisição é completada (load)
+    xhr.addEventListener('load', () => {
+        if(xhr.status >= 200 && xhr.status < 300) {
+            // Padrão antigo: retornando callback
+            obj.success(xhr.responseText);
+        } else {
+            obj.error(xhr.statusText)
+        }
+    })
+}
+
+// Captura cliques em  qualquer parte do documento (página)
+document.addEventListener('click', event => {
+    const el = event.target;
+    const tag = el.tagName.toLowerCase(); // Retorna o nome da tag html
+
+    // Verifica se a tag html é do tipo 'a' (links)
+    if(tag === 'a') {
+        event.preventDefault();
+        carregaPagina(el);
+    }
+})
+
+function carregaPagina(el) {
+    const href = el.getAttribute('href')
+    
+    request({
+        method: 'GET',
+        url: href,
+
+        success(response) {
+            carregaResultado(response)
+        },
+
+        error(errorText) {
+
+        }
+    })
+}
+
+function carregaResultado(response) {
+    const resultado = document.querySelector('.resultado');
+    resultado.innerHTML = response;
+}

@@ -36,18 +36,19 @@ document.addEventListener('click', event => {
     }
 })
 
-function carregaPagina(el) {
+async function carregaPagina(el) {
     const href = el.getAttribute('href')
     const objConfig = {
         method: 'GET',
         url: href
     };
 
-    request(objConfig)
-        .then(response => {
-            carregaResultado(response)
-        })
-        .catch(error => console.log(error))
+    try {
+        const response = await request(objConfig);
+        carregaResultado(response);
+    } catch(e) {
+        console.log('Erro: ' + e);
+    }
 }
 
 function carregaResultado(response) {
@@ -56,14 +57,15 @@ function carregaResultado(response) {
 }
 
 /*
-Usuário clica em um link <a>.
-carregaPagina(el) é chamada com o elemento clicado.
-Dentro de carregaPagina:
-    Criamos objConfig com method e url.
-    Chamamos request(objConfig) → retorna Promise.
-A Promise executa a requisição HTTP.
-Quando a requisição termina:
-    Sucesso → chama resolve → executa .then(...).
-    Erro → chama reject → executa .catch(...).
-.then(response) chama carregaResultado(response) para renderizar o conteúdo na página.
+Fluxo:
+    Usuário clica no <a>.
+    O event listener chama carregaPagina(el).
+    carregaPagina começa a executar.
+    Chega no await request(...).
+    A função é “suspensa”.
+    O controle volta para o Event Loop.
+    Quando a requisição termina:
+        A Promise resolve.
+        A função carregaPagina continua do ponto onde parou.
+        Executa carregaResultado(response).
 */
