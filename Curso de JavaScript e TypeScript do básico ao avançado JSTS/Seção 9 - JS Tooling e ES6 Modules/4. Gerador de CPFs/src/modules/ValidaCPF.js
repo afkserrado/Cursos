@@ -1,3 +1,4 @@
+// 705.484.450-52 070.987.720-03
 export default class ValidaCPF {
     constructor(cpfEnviado) {
         Object.defineProperty(this, 'cpfLimpo', {
@@ -5,60 +6,40 @@ export default class ValidaCPF {
             enumerable: true,
             configurable: false,
             value: cpfEnviado.replace(/\D+/g, '')
-        }) 
+        });
     }
 
-    // Método privado
-    #criarCpfParcial(digitos) {
-        if (digitos === 9) {
-            return this.cpfLimpo.slice(0, -2)
-        }
-
-        if (digitos === 10) {
-            return this.cpfLimpo.slice(0, -1)
-        }
+    éSequência() {
+        return this.cpfLimpo.charAt(0).repeat(11) === this.cpfLimpo;
     }
 
-    // Método privado
-    #criarDigito(cpfParcial) {
-        const cpfArray = cpfParcial.split('')
-        //console.log(cpfArray)
-        
-        let soma = 0
-        cpfArray.reduce((cont, digito) => {
-            soma += Number(digito) * cont
-            //console.log(cont, digito, soma)
-            return cont - 1 // Decrementa o contador
-        }, cpfArray.length + 1)
+    geraNovoCpf() {
+        const cpfSemDigitos = this.cpfLimpo.slice(0, -2);
+        const digito1 = ValidaCPF.geraDigito(cpfSemDigitos);
+        const digito2 = ValidaCPF.geraDigito(cpfSemDigitos + digito1);
+        this.novoCPF = cpfSemDigitos + digito1 + digito2;
+    }
 
-        //console.log(soma)
-        return (soma % 11 < 2) ? 0 : 11 - (soma % 11)
-    }   
+    static geraDigito(cpfSemDigitos) {
+        let total = 0;
+        let reverso = cpfSemDigitos.length + 1;
 
-    validarCpf() {
-        if (!this.cpfLimpo) return 'Não existe: ' + false
-        if (typeof this.cpfLimpo !== 'string') return 'Não é string: '+ false
-        if (this.cpfLimpo.length !== 11) return 'Não tem 11 dígitos: ' + false
-        if (this.cpfLimpo[0].repeat(11) === this.cpfLimpo) return 'Todos os dígitos são iguais: ' + false
+        for(let stringNumerica of cpfSemDigitos) {
+            total += reverso * Number(stringNumerica);
+            reverso--;
+        }
 
-        const cpfParcial1 = this.#criarCpfParcial(9)
-        const dv1 = String(this.#criarDigito(cpfParcial1))
-        //console.log(typeof dv1, dv1)
-        if (dv1 !== this.cpfLimpo[9]) return 'DV1 inválido: ' + false
+        const digito = 11 - (total % 11);
+        return digito <= 9 ? String(digito) : '0';
+    }
 
-        const cpfParcial2 = this.#criarCpfParcial(10)
-        const dv2 = String(this.#criarDigito(cpfParcial2))
-        //console.log(typeof dv2, dv2)
-        if (dv2 !== this.cpfLimpo[10]) return 'DV2 inválido: ' + false
+    valida() {
+        if(!this.cpfLimpo) return false;
+        if(typeof this.cpfLimpo !== 'string') return false;
+        if(this.cpfLimpo.length !== 11) return false;
+        if(this.éSequência()) return false;
+        this.geraNovoCpf();
 
-        return 'CPF válido: ' + true
+        return this.novoCPF === this.cpfLimpo;
     }
 }
-
-// const cpf1 = new ValidaCPF('705.484.450-52') // válido
-// const cpf2 = new ValidaCPF('070.987.720-04') // inválido
-// const cpf3 = new ValidaCPF('111.111.111-11') // inválido
-
-// console.log(`${cpf1.validarCpf()}\n${cpf2.validarCpf()}\n${cpf3.validarCpf()}`)
-
-// console.log('Cheguei aqui...')

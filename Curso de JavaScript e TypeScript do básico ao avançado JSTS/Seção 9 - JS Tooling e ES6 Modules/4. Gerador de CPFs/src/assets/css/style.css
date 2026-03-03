@@ -32,6 +32,8 @@ body {
     background: white;
     padding: 20px;
     border-radius: 10px; /* Arredonda os cantos */
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 /* Estilizando elementos do formulário */
@@ -71,4 +73,13 @@ form button {
 /* Estilizando a passagem do mouse sobre o button */
 form button:hover {
     background: var(--cor-principal-escura);
+}
+
+.cpf-gerado {
+    font-size: 2em;
+    color: var(--cor-principal);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 40px;
+    letter-spacing: 5px;
 }
