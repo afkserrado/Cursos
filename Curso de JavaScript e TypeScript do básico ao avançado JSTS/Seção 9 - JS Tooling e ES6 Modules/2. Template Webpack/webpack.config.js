@@ -5,19 +5,24 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'public', 'assets', 'js'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        clean: true
     },
     module: {
-        rules: [{
-            exclude: /node_modules/,
-            test: /\.js$/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['@babel/env']
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', { useBuiltIns: 'usage', corejs: 3 }]
+                        ]
+                    }
                 }
             }
-        }]
+        ]
     },
-    devtool: 'source-map' // Mapeia o erro para o arquivo original
-}
+    devtool: 'source-map'
+};
