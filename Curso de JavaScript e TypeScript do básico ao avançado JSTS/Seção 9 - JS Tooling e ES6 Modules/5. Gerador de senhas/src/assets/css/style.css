@@ -1,0 +1,56 @@
+/* Importa uma fonte externa*/
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* Raiz do documento CSS */
+:root {
+    /* Criando variáveis globais */
+    --cor-principal: rgb(17, 86, 102); 
+    --cor-principal-escura: rgb(17, 65, 102);
+}
+
+/* Estilização global */
+* {
+    box-sizing: border-box; /* Garante que os elementos não ultrapassem o tamanho esperado ao adicionar padding e bordas */ 
+    
+    outline: 0; /* Borda de foco */
+}
+
+/* Estilização do corpo do HTML */
+body {
+    margin: 0;
+    padding: 0; /* Espaço entre o conteúdo de um elemento e suas bordas */
+    background: var(--cor-principal);
+    font-family: "Open Sans", sans-serif; /* sans-serif é o fallback */
+    font-size: 1.3em; /* "em" é o tamanho padrão */
+    line-height: 1.5em;
+}
+
+/* Estilizando a classe "container" */
+.container {
+    max-width: 640px; /* Largura máxima */
+    margin: 50px auto; /* Margem de 50px no topo e centraliza hor*/
+    background: white;
+    padding: 20px;
+    border-radius: 10px; /* Arredonda os cantos */
+}
+
+/* Estilizando a passagem do mouse sobre o button */
+form button:hover {
+    background: var(--cor-principal-escura);
+}
+
+.senha-gerada {
+    font-size: 2em;
+    color: var(--cor-principal);
+}
+
+input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+}
+
+button {
+    display: block;
+    margin: 40px 0; /* 0 nas laterais */
+    font-size: 1em;
+}
