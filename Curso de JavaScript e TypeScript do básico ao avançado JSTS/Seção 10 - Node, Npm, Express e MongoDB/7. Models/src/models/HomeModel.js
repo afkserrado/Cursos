@@ -9,4 +9,8 @@ const HomeSchema = new mongoose.Schema({
 // Criação do 'Model', objeto que permitirá a interação do programa com a coleção no banco
 const HomeModel = mongoose.model('Home', HomeSchema);
 
-module.exports = HomeModel;
+class Home {
+
+}
+
+module.exports = Home;
