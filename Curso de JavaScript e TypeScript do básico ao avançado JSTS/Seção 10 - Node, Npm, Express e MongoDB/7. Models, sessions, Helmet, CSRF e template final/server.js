@@ -17,7 +17,11 @@ const flash = require('connect-flash');
 
 const routes = require('./routes');
 const path = require('path');
-const { middlewareGlobal } = require('./src/middlewares/middleware')
+const helmet = require('helmet');
+const csrf = require('csurf');
+const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware')
+
+app.use(helmet());
 
 // Middleware para ler dados de formulário
 app.use(express.urlencoded({extended: true}));
@@ -49,7 +53,11 @@ app.set('views', path.resolve(__dirname, 'src', 'views'));
 // Define o motor dos templates HTML
 app.set('view engine', 'ejs');
 
+app.use(csrf());
+
 app.use(middlewareGlobal);
+app.use(checkCsrfError);
+app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('pronto', () => {
