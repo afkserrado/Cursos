@@ -1,4 +1,20 @@
-Padrão de projeto utilizado: MVC (Models, Views and Controllers)
+# Boilerplate Node.js com Express, EJS, Webpack e MongoDB
+
+Template base para aplicações web com Node.js utilizando Express no back-end, EJS na renderização de views, MongoDB com Mongoose para persistência e Webpack para empacotamento do front-end.
+
+## Visão geral
+
+Este projeto segue o padrão MVC (Models, Views and Controllers), separando responsabilidades entre regras de entrada e saída, renderização de páginas, organização das rotas e estrutura de dados.
+
+A aplicação possui:
+- Back-end com Express
+- Views renderizadas com EJS
+- Middlewares globais e proteção CSRF
+- Sessões persistidas no MongoDB
+- Front-end empacotado com Webpack
+- Estrutura inicial para uso com Mongoose
+
+## Estrutura do projeto
 
 .
 ├── frontend
