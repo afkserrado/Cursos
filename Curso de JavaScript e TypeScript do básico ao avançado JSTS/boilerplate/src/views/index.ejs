@@ -7,6 +7,18 @@
         </h1>
 
         <form action="/" method="post">
+            <!-- Envia um token aleatório para o servidor para provar que o formulário foi gerado pelo próprio site, evitando ataques CSRF -->
+            <!--
+            O middleware do CSRF (como o do csurf em Express.js) gera um token associado à sessão.
+            Esse token é inserido no formulário.
+            Quando o usuário envia o formulário, o navegador envia dados, o middleware CSRF faz a verificação:
+                - pega o token enviado no formulário (_csrf)
+                - verifica se ele corresponde ao token válido para aquela sessão
+            
+            Resultado:
+                ✔️ tokens correspondem → requisição continua
+                ❌ tokens não correspondem ou não existem → erro EBADCSRFTOKEN
+            -->
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <label>Cliente</label>
             <input type="text" name="cliente">
